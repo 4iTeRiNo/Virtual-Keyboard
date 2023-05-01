@@ -173,7 +173,7 @@ const keysEn = [
 				keyBtn.classList.add('Space')
 			}
 			document.addEventListener('keydown', function(e) {
-				e.preventDefault()
+				// e.preventDefault()
 				let keyPress = [];
 				keyPress.push(e.code)
 				if(	e.code === keyBtn.getAttribute("keyCode")) {
@@ -185,7 +185,28 @@ const keysEn = [
 				}
 		})
 				document.addEventListener('keyup', function(e) {
-				e.preventDefault()
+				// e.preventDefault()
+				if(	e.code === keyBtn.getAttribute("keyCode")) {
+					keyBtn.classList.remove('active')
+				}
+				if(e.key === "Shift") {
+					setLowerCaseKeys()
+				}
+			})
+			document.addEventListener('click', function(e) {
+				// e.preventDefault()
+				let keyPress = [];
+				keyPress.push(e.code)
+				if(	e.code === keyBtn.getAttribute("keyCode")) {
+					keyBtn.classList.add('active')
+					console.log(keyPress)
+				}
+				if(e.key === "Shift") {
+					setUpperCaseKeys()
+				}
+		})
+				document.addEventListener('mouseup', function(e) {
+				// e.preventDefault()
 				if(	e.code === keyBtn.getAttribute("keyCode")) {
 					keyBtn.classList.remove('active')
 				}
@@ -209,5 +230,13 @@ const setLowerCaseKeys = () => {
     if (key.innerHTML.length === 1) {
       key.innerHTML = key.innerHTML.toLowerCase()
     }
+  }
+}
+
+for (const key of keysArr) {
+  if (key.innerHTML.length === 1) {
+    if(key.innerHTML !== '▲' && key.innerHTML !== '►' && key.innerHTML !==  '▼' && key.innerHTML !== '◄'){
+      key.addEventListener('click', () => input.innerHTML += key.innerHTML)
+      }
   }
 }

@@ -57,6 +57,11 @@
     transition: ease-in-out;
 }
 
+.key:active {
+    background-color: #a7a4a56e;
+    transition: ease-in-out;
+}
+
 .keyboard .Tab {
     width: 60px
 }
