@@ -1,3 +1,4 @@
+"Use strict"
 const keysEn = [
 	{code: 'Backquote', keyCode: '`'},
 	{code: 'Digit1', keyCode: '1'},
@@ -64,7 +65,6 @@ const keysEn = [
 	{code: 'ArrowRight', keyCode: '►'},
 	{code: 'ControlRight', keyCode: 'Ctrl'},
 ]
-
 
 	const keysRus = [
 	{code: 'Backquote', keyCode: 'ё'},
@@ -141,6 +141,11 @@ const keysEn = [
 	document.body.appendChild(input)
 	keyBoard.className = 'keyboard'
 	document.body.appendChild(keyBoard)
+	let isCaps = false;
+	let paragraph = document.createElement('p')
+	paragraph.innerText = 'Клавиатура создана в операционной системе Windows'
+	keyBoard.after(paragraph)
+
 
 
 	keysEn.forEach( (char) => {
@@ -173,7 +178,6 @@ const keysEn = [
 				keyBtn.classList.add('Space')
 			}
 			document.addEventListener('keydown', function(e) {
-				// e.preventDefault()
 				let keyPress = [];
 				keyPress.push(e.code)
 				if(	e.code === keyBtn.getAttribute("keyCode")) {
@@ -182,31 +186,17 @@ const keysEn = [
 				}
 				if(e.key === "Shift") {
 					setUpperCaseKeys()
+				}
+				if(e.key === "CapsLock") {
+					if(isCaps === false) {
+						setUpperCaseKeys()
+						isCaps = true
+					}
+						setLowerCaseKeys()
+						isCaps = false
 				}
 		})
 				document.addEventListener('keyup', function(e) {
-				// e.preventDefault()
-				if(	e.code === keyBtn.getAttribute("keyCode")) {
-					keyBtn.classList.remove('active')
-				}
-				if(e.key === "Shift") {
-					setLowerCaseKeys()
-				}
-			})
-			document.addEventListener('click', function(e) {
-				// e.preventDefault()
-				let keyPress = [];
-				keyPress.push(e.code)
-				if(	e.code === keyBtn.getAttribute("keyCode")) {
-					keyBtn.classList.add('active')
-					console.log(keyPress)
-				}
-				if(e.key === "Shift") {
-					setUpperCaseKeys()
-				}
-		})
-				document.addEventListener('mouseup', function(e) {
-				// e.preventDefault()
 				if(	e.code === keyBtn.getAttribute("keyCode")) {
 					keyBtn.classList.remove('active')
 				}
@@ -233,10 +223,18 @@ const setLowerCaseKeys = () => {
   }
 }
 
-for (const key of keysArr) {
-  if (key.innerHTML.length === 1) {
-    if(key.innerHTML !== '▲' && key.innerHTML !== '►' && key.innerHTML !==  '▼' && key.innerHTML !== '◄'){
-      key.addEventListener('click', () => input.innerHTML += key.innerHTML)
-      }
+keyBoard.addEventListener('click', function (e) {
+  if (e.target.classList.contains('key')) {
+    if (e.target.classList.contains('Space')) {
+      input.textContent += '';
+    }
+    if (e.target.classList.contains('Backspace')) {
+      input.textContent = input.textContent.substring(
+        0,
+        input.textContent.length - 1
+      );
+    }
+  } else {
+    return;
   }
-}
+});
