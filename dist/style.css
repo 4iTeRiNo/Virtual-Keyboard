@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
-body{
+.body {
     margin:0;
     padding:0;
     box-sizing: border-box;
@@ -25,7 +25,7 @@ body{
     display:flex;
     flex-wrap: wrap;
     justify-self: center;
-    width:70vw;
+    width:890px;
     border-radius:1vw;
     margin-top:5vh;
     background-color:linear-gradient(135deg, rgba(205,207,214,1) 0%,rgba(190,192,196,1) 100%);
@@ -33,9 +33,9 @@ body{
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 .key{
-    width: calc(70vw / 15);
-    height:calc(70vw / 25);
-    margin:.03vw;
+    width: 55px;
+    height:35px;
+    margin: 2px;
     border-radius:5px;
     border-color:black;
     font-weight: bold;
@@ -49,54 +49,41 @@ body{
 }
 .key:hover{
     cursor: pointer;
-		background-color: #e5e3e4;
+	background-color: #e5e3e4;
 }
-.key:active,.key:nth-child(1):active,.key:nth-child(14):active,.key:nth-child(15):active,.key:nth-child(43):active,.key:nth-child(56):active{
-    background-color:darkgray;
+
+.key.active {
+    background-color: #a7a4a56e;
     transition: ease-in-out;
-}
-.key:nth-child(15){
-    width: calc(1.5 * (70vw / 15));
-    background-color: #818488;
-    color:darkgray;
-}
-.key:nth-child(1),:nth-child(28),:nth-child(42),:nth-child(57),:nth-child(58),:nth-child(60),:nth-child(55),:nth-child(54),:nth-child(62),:nth-child(63),:nth-child(64){
-    background-color: #818488;
-    color:darkgray;
-}
-.key:nth-child(59){
-    width: calc(6 * (70vw / 15));
-    color:darkgray;
 }
 
 .keyboard .Tab {
-	width: 50px
-}
-
-.keyboard 
-.Backspace,
-.keyboard 
-.CapsLock,
-.keyboard 
-.ShiftLeft {
-	width: 100px
-}
-
-.keyboard .Space {
-	width: 330px
-}
-
-.keyboard .Delete {
-	width: 44px
+    width: 60px
 }
 
 .keyboard .Enter,
+.keyboard .ShiftLeft {
+	width: 125px
+}
+.keyboard .CapsLock,
 .keyboard .ShiftRight {
-	width: 86px
+    width: 100px;
 }
 
+.keyboard .Backspace {
+    width: 110px;
+}
+
+.keyboard .Space {
+	width: 406px
+}
+
+.keyboard .Delete {
+	width: 45px
+}
 
 @media only screen and (max-width: 768px){
+    
     .key{
         border-radius: 0;
         border-width: 0.1px;

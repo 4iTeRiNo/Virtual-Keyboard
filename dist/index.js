@@ -172,4 +172,42 @@ const keysEn = [
 			}	if(keyBtn.getAttribute('keyCode') === 'Space') {
 				keyBtn.classList.add('Space')
 			}
+			document.addEventListener('keydown', function(e) {
+				e.preventDefault()
+				let keyPress = [];
+				keyPress.push(e.code)
+				if(	e.code === keyBtn.getAttribute("keyCode")) {
+					keyBtn.classList.add('active')
+					console.log(keyPress)
+				}
+				if(e.key === "Shift") {
+					setUpperCaseKeys()
+				}
+		})
+				document.addEventListener('keyup', function(e) {
+				e.preventDefault()
+				if(	e.code === keyBtn.getAttribute("keyCode")) {
+					keyBtn.classList.remove('active')
+				}
+				if(e.key === "Shift") {
+					setLowerCaseKeys()
+				}
+			})
 	})
+
+	const keysArr = document.getElementsByClassName('key')
+
+const setUpperCaseKeys = () => {
+	for (const key of keysArr) {
+		if (key.innerHTML.length === 1) {
+			key.innerHTML = key.innerHTML.toUpperCase()
+		}
+	}
+}
+const setLowerCaseKeys = () => {
+  for (const key of keysArr) {
+    if (key.innerHTML.length === 1) {
+      key.innerHTML = key.innerHTML.toLowerCase()
+    }
+  }
+}
